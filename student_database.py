@@ -5,28 +5,31 @@ class StudentDatabase:
 
 class Student:
     def __init__(self,student_id,name,department,is_enrolled=False):
-        self.student_id=student_id
-        self.name=name
-        self.department=department
-        self.is_enrolled=is_enrolled
+        self.__student_id=student_id
+        self.__name=name
+        self.__department=department
+        self.__is_enrolled=is_enrolled
+
+    def get_id(self):
+        return self.__student_id
     
     def enroll_student(self):
-        if self.is_enrolled==False:
-            self.is_enrolled=True
+        if self.__is_enrolled==False:
+            self.__is_enrolled=True
         else:
             print('The Student is already Enrolled')
            
     def drop_student(self):
-        if self.is_enrolled==True:
-            self.is_enrolled=False
+        if self.__is_enrolled==True:
+            self.__is_enrolled=False
         else:
             print('The Student is not Enrolled')
 
 
     def view_student_info(self):
-        print(f'ID: {self.student_id}, Name: {self.name}, Department: {self.department}, Enrolleed: {self.is_enrolled}')
+        print(f'ID: {self.__student_id}, Name: {self.__name}, Department: {self.__department}, Enrolleed: {self.__is_enrolled}')
 
-s1 = Student('S101','Toufiq','CST')
+s1 =Student('S101','Toufiq','CST')
 s2=Student('S102','Talukder','EEE')
 s3=Student('S103','Yousuf','ME')
 sdb=StudentDatabase()
@@ -49,7 +52,7 @@ while True:
         flag=False
         id = input('Enter student ID to enroll: ')
         for student in StudentDatabase.student_list:
-            if student.student_id == id:
+            if student.get_id() == id:
                 student.enroll_student()
                 flag=True
                 break
@@ -62,7 +65,7 @@ while True:
         flag=False
         id = input('Enter student ID to drop: ')
         for student in StudentDatabase.student_list:
-            if student.student_id == id:
+            if student.get_id() == id:
                 student.drop_student()
                 flag=True
                 break
