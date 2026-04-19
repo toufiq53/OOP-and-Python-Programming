@@ -6,7 +6,7 @@ class StudentDatabase:
 class Student:
     def __init__(self,student_id,name,department,is_enrolled=False):
         self.__student_id=student_id
-        self.__name=name
+        self.__name=name  
         self.__department=department
         self.__is_enrolled=is_enrolled
 
@@ -25,7 +25,6 @@ class Student:
         else:
             print('The Student is not Enrolled')
 
-
     def view_student_info(self):
         print(f'ID: {self.__student_id}, Name: {self.__name}, Department: {self.__department}, Enrolleed: {self.__is_enrolled}')
 
@@ -37,10 +36,11 @@ sdb.add_student(s1)
 sdb.add_student(s2)
 sdb.add_student(s3)
 while True:
+    print('----Student Management Menu----')
     print('1. View All Students')
     print('2. Enroll Student')
     print("3. Drop Student")
-    print("4. Exit")
+    print('4. Exit')
 
     choice = input('Enter your choice (1-4) : ')
 
@@ -59,8 +59,6 @@ while True:
         if flag ==False:
             print('Invalid Student ID')
                
-                
-
     elif choice == '3':
         flag=False
         id = input('Enter student ID to drop: ')
@@ -72,11 +70,9 @@ while True:
         if flag==False:
             print('Invalid Student ID')
             
-
     elif choice == '4':
         print('Exit')
         break
-
     else:
         print('Invalid choice')
-
+        
